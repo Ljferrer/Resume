@@ -128,9 +128,10 @@ Focus: \bf Medical Devices \\
 \location{May 2018 – Present | Marina del Rey, CA}
 \vspace{\topsep} % Hacky fix for awkward extra vertical space
 \begin{tightitemize}
-\item \href{https://viterbischool.usc.edu/news/2018/01/usc-isi-develop-translation-information-retrieval-system-uncommon-languages/}{\bf SARAL} -- Currently working on machine translation for low resource languages 
-\item Exploring and adapting the Transformer architecture and training scheme to maximize learning with a modest number of parallel text examples
-\item Operationalizing our models to fit into the larger SARAL pipeline \\
+\item \href{https://viterbischool.usc.edu/news/2018/01/usc-isi-develop-translation-information-retrieval-system-uncommon-languages/}{\bf SARAL} -- Working with Transformers for low resource machine translation 
+\item Reimplemented several academic papers in PyTorch 
+\item Improved our existing NMT system's performance by 1.5 BLEU by incorporating Stochastic Depth to train a 50\% deeper model
+\item Operationalized our models to fit into the larger SARAL pipeline \\
 i.e. Audio/Text Database --> ASR --> {\it NMT} --> IR --> Summarization --> User
 \item \href{https://sage-platform.isi.edu}{\bf SAGE} -- Implemented the backend of SAGE's in-house \href{http://54.153.12.18/research-tool/?referrer=rct&id=UXVlc3Rpb25Ob2RlOjMxMA==&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxODExLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTYxODE3NTMzLCJlbWFpbCI6InNhZ2VAaXNpLmVkdSJ9.bFMd1C0R938hAJic-gzNEXTfI1bpZZW_VusjpXAommg}{\bf Research Tool}, a news database that uses sentence embeddings made with TensorFlow, finds nearest neighboring hits with Faiss, and is deployed as a Restful API
 \item Set up a host server on AWS and automated the ingestion pipeline that continuously updates the Research Tool with +100,000 news articles per day from LexisNexis 
@@ -242,4 +243,3 @@ conditions for tissue segmentation in a HIPAA compliant setting
 %----------------------------------------------------------------------------------------
 
 \end{document}
-
