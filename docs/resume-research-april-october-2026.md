@@ -19,8 +19,8 @@ resume and the broader work found during research.
 - WAR: reviewed public version 0.21.16 at
   [`dd8373325fafee2cc4626a83aa835c4870eb7b62`](https://github.com/Ljferrer/WorkAuditRefine/tree/dd8373325fafee2cc4626a83aa835c4870eb7b62)
   and local history for the project's origin.
-- Current unit economics come from the user's dashboard screenshot. Only its
-  aggregate figures are retained here.
+- Current unit economics come from the user's dashboard screenshot and the
+  subsequent resume-review comments. Only aggregate figures are retained here.
 
 ## Activation below one cent per page
 
@@ -34,11 +34,29 @@ The supplied dashboard shows October 21-26, 2026 in its UTC view:
 | Chat cost per activation | $0.003115 |
 | Combined cost per activation | $0.0127 |
 
-The supported claim is **measured Activation AI pipeline cost below $0.01/page**,
-excluding chat. This is a six-day observation, not a lifetime average or complete
-infrastructure TCO study. The April resume's $0.0269/page uses broader wording;
-its accounting scope has not been reconciled with the screenshot. No savings
-percentage, annualized savings, or profit improvement is therefore asserted.
+The screenshot supports **Activation AI pipeline cost below $0.01/page**,
+excluding chat. It is a six-day observation, not a lifetime average or complete
+infrastructure TCO study.
+
+In the October 26 resume review, Lukas corrected the comparable pre-migration
+cost to approximately **$0.031/page**, superseding the earlier $0.027 figure.
+He supplied current AI Activation volume of **500K+ pages/month** and an
+**80% reduction in ECS costs**. These are user-supplied business metrics, not independently derived
+from repository code. They supersede the first draft's decision to omit a
+before/after cost comparison.
+
+The resume's **~$125K+ annualized processing savings** is an estimate calculated
+at 500,000 pages/month and the one-cent ceiling:
+
+`($0.031 - $0.010) × 500,000 × 12 = $126,000/year`
+
+The estimate is rounded down to approximately $125K+ to reflect the approximate
+baseline. It describes the
+annualized cost difference at the stated volume, not a full year of realized
+savings, company profit, or an infrastructure TCO calculation. Chat costs remain
+outside the comparison. The core medical-record ingestion, segmentation, and
+indexing pipeline's **5M+ pages/month** is distinct from the **500K+ pages/month**
+AI Activation workload; these volumes are not added together.
 
 Source identifies Qwen 3.6 FP8 as `Qwen36` / `qwen-3.6-fp8`; **27B** is supplied
 directly by Lukas. The August 18 plan calls the inference service
@@ -76,7 +94,7 @@ October production configuration; not every stage runs on Qwen.
 
 | Accomplishment | Evidence and scope |
 | --- | --- |
-| Fargate and ARM64 modernization | Foundation `1fef2050`; summary steps `2a159165`, `fc6a5e9e`; page processing `d71acc46`, `2d3efde1`; production Spot gates `9d8b3aa7`; ARM64 gates `89655e42`, `53910edc`. Seven compute steps, with Spot/on-demand recovery for the two bulk page steps. No overall savings percentage asserted. |
+| Fargate and ARM64 modernization | Foundation `1fef2050`; summary steps `2a159165`, `fc6a5e9e`; page processing `d71acc46`, `2d3efde1`; production Spot gates `9d8b3aa7`; ARM64 gates `89655e42`, `53910edc`. Seven compute steps, with Spot/on-demand recovery for the two bulk page steps. The 80% ECS cost reduction is supplied by Lukas in the resume review; the resume omits proprietary workflow detail. |
 | Hybrid GPU serving | `3c9f6959`, `84c01596`, `803ef897`, `99fce8f1`; production cutover `44dc6b6b` (Aug 25); backlog-driven cloud fallback `8c578af2` and worker-pool separation `89c55492` (Sep 28). This is RecSeg serving, distinct from the Qwen server. |
 | Python-native record summaries | Native chain `b9a264aa`; pgvector readers `852f2f57`; routing `4fbc62cf`; transactional writers/parity artifacts `a27dd380`, `d4728f0b`; production switch `2a7b0e3c` (Oct 16); recovery/fencing `6b4df9d3`, `6a32366e`, `bf7f3d7b`. |
 | Translation evaluation | New May pipeline: `f4d30f27`, `b796e0cc`, `a3382dd2`, `c52e46f1`, `41246aef`, `6129536a`, `64151163`, `505514e4`, `cbf603a0`. OpenWHO, WMT Biomedical, FLORES; COMET/COMETKiwi, classical metrics, GEMBA scoring, degraded scans, bootstrap intervals, clinical-error reporting. Clinical thresholds await calibration; no safety guarantee is claimed. |
@@ -121,10 +139,35 @@ Source entry points, relative to AutoIndex (October content read at `origin/main
   infrastructure resource budgets (`3274ce49`, `75e43983`), prompt-rejection alarms
   and delivery recovery (`71ae166e`, `bab94099`, `6bdadb2c`).
 
-## WAR: Work Audit Refine
+## WAR (Work, Audit, Refine)
 
-Creator-owned project begun June 18, 2026 (initial commits `3401ff7d`, `d187eaf9`).
-The resume features its shipped Claude Code workflow.
+The start date was rechecked after Lukas recalled starting in earnest in July.
+Under the requested earliest-commit rule, **June 2026** is correct:
+
+- Initial README commit
+  [`3401ff7d`](https://github.com/Ljferrer/WorkAuditRefine/commit/3401ff7dd5ea2527bfc2b5b859974fcedcfa6046):
+  June 18, 2026, 3:42:45 p.m. PDT; author and committer timestamps agree.
+- First substantive v0.1.0 implementation
+  [`d187eaf9`](https://github.com/Ljferrer/WorkAuditRefine/commit/d187eaf91bfbe0eed554ea843592272423ad3e52):
+  June 18, 2026, 4:37:12 p.m. PDT; 611 additions across 15 files.
+
+The revised resume emphasizes what the workflow enables engineers to do:
+
+- [Planning interview](https://github.com/Ljferrer/WorkAuditRefine/blob/dd8373325fafee2cc4626a83aa835c4870eb7b62/skills/war-strategy/references/plan-interview.md):
+  establishes explicit design decisions, acceptance criteria, and implementation
+  latitude, distinguishing settled facts from unresolved design choices.
+- [Worker contract](https://github.com/Ljferrer/WorkAuditRefine/blob/dd8373325fafee2cc4626a83aa835c4870eb7b62/agents/war-worker.md):
+  follows agreed intent, resolves implementation ambiguity within guardrails,
+  and stops for contradictions or unresolved design changes.
+- [Audit disposition rules](https://github.com/Ljferrer/WorkAuditRefine/blob/dd8373325fafee2cc4626a83aa835c4870eb7b62/skills/war/references/disposition-eligibility.md):
+  routes eligible in-scope corrections into bounded fix/re-audit loops while
+  reserving design trade-offs for the engineer.
+
+The implementation details below corroborate those outcomes. The parenthetical
+"vastly superior to /grill-me" is the user's expressly requested qualitative
+assessment; no comparative benchmark was supplied or independently established.
+The auditor description emphasizes independent, read-only, first-class subagents
+and their role in driving in-scope fixes toward a stable solution.
 
 - [README](https://github.com/Ljferrer/WorkAuditRefine#what-it-does) and
   [workflow engine](https://github.com/Ljferrer/WorkAuditRefine/blob/dd8373325fafee2cc4626a83aa835c4870eb7b62/skills/war/assets/workflow-template.js):
@@ -151,13 +194,26 @@ work in progress.
 
 ## Editorial choices
 
-- Two pages: WAR and recent Sequoia work on page one; earlier impact, prior roles,
-  skills, and education on page two.
-- Established Sequoia metrics remain separate from newly researched results.
+- Two pages: WAR's engineer-facing benefits and Sequoia's business impact on page
+  one; production quality/reliability, prior roles, skills, and education on page two.
+- Core processing scale, clinical outcomes, and retrieval gains moved to page one.
+  The two pipeline volumes are distinguished, and the GPU count is removed.
+- Evaluation wording explains the goal of meeting or exceeding deployed quality
+  during model migrations and now appears on page one. Persistence wording
+  explains protection of human edits
+  during concurrent processing, retries, and reruns.
 - Earlier roles and degrees are retained. Departure commentary and claims of a
   uniquely possible technical remedy were removed.
 - All three requested QR codes also have clickable PDF links. Main text is
-  selectable; QR graphics are vectors.
+  selectable; QR graphics are vectors. WAR's repository and demo codes are
+  stacked vertically beside wider bullets, with a new opening bullet describing
+  the Claude Code package's skills and hooks, including user message readability
+  (mitigating "Claudanese") as requested.
+- The expanded Technical & Professional Skills section adds evaluation methods
+  supported by OpenAI red teaming and AutoIndex benchmarks, plus product and
+  engineering skills supported by WAR planning, clinical product outcomes,
+  technical documentation, and the regulatory/risk-assessment work described in
+  the supplied resume history. These additions occupy three lines.
 - The April document is preserved byte-for-byte. `src.tex` remains historical;
   `generate_resume.py` is the current editable source.
 

@@ -2,7 +2,7 @@
 
 [Read the current resume](LukasFerrer_Resume.pdf) · Updated October 26, 2026
 
-The two-page resume features Work Audit Refine (WAR), the migration of clinical
+The two-page resume features WAR (Work, Audit, Refine), the migration of clinical
 Activation workloads to self-hosted Qwen, and recent production ML engineering.
 It includes clickable links and QR codes for [WAR](https://github.com/Ljferrer/WorkAuditRefine),
 the [video demo](https://youtu.be/6LXrfWtKSlg?si=guy4gEUdLSzJRNSj), and

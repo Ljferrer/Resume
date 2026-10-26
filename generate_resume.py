@@ -95,7 +95,7 @@ def footer(page):
     c.drawRightString(LEFT + WIDTH, 22, f"{page} / 2")
 
 
-# Page 1: portfolio and recent production engineering.
+# Page 1: portfolio and business impact.
 paragraph("Lukas José Ferrer", 753, size=26, leading=32, bold=True, width=450)
 paragraph("ML &amp; AI SYSTEMS ENGINEER", 715, size=10.3, leading=14, color=ACCENT, bold=True)
 paragraph('<link href="mailto:lukasjferrer@gmail.com">lukasjferrer@gmail.com</link>'
@@ -106,70 +106,79 @@ paragraph(f'<link href="{LINKEDIN}" color="#14645D">linkedin.com/in/lukasferrer<
 qr(LINKEDIN, "LinkedIn", 506, 687, size=64)
 
 y = paragraph("ML engineer building clinical AI, self-hosted inference, and developer tools. "
-              "Shipped systems processing <b>100M+ medical-record pages</b>; creator of WAR, "
-              "an open-source platform for parallel AI coding with independent review and verified integration.",
+              "Shipped systems processing <b>100M+ medical-record pages</b>; creator of "
+              "<b>WAR (Work, Audit, Refine)</b>, helping engineers turn design decisions into "
+              "implemented, audited code.",
               647, size=10, leading=14)
 
 card_top = y - 15
-card_bottom = card_top - 167
+card_bottom = card_top - 238
 c.setFillColor(PALE)
-c.roundRect(LEFT, card_bottom, WIDTH, 167, 5, stroke=0, fill=1)
-paragraph("FEATURED OPEN SOURCE", card_top - 12, x=54, width=350,
+c.roundRect(LEFT, card_bottom, WIDTH, 238, 5, stroke=0, fill=1)
+paragraph("FEATURED OPEN SOURCE", card_top - 12, x=54, width=425,
           size=8, leading=11, color=ACCENT, bold=True)
-paragraph(f'<link href="{WAR}"><b>WAR</b> | Work Audit Refine</link>',
-          card_top - 30, x=54, width=350, size=15, leading=20)
+paragraph(f'<link href="{WAR}"><b>WAR</b> (Work, Audit, Refine)</link>',
+          card_top - 30, x=54, width=425, size=15, leading=20)
 paragraph("Creator &amp; Maintainer  |  June 2026 - Present", card_top - 54,
-          x=54, width=350, size=8.3, leading=12, color=MUTED)
-wy = bullet("Built a Claude Code plugin that schedules task DAGs, runs parallel agents in isolated "
-            "Git worktrees, and integrates approved changes through a serial merge queue.",
-            card_top - 76, x=54, width=350, size=9, leading=12.3, gap=5)
-wy = bullet("Designed commit-pinned reviews by 1-5 independent auditors, severity-based blocking, "
-            "and test/lint gates; added SQLite FTS5 memory and Git-based crash recovery.",
-            wy, x=54, width=350, size=9, leading=12.3, gap=0)
+          x=54, width=425, size=8.3, leading=12, color=MUTED)
+wy = bullet("An open-source package for Claude Code with a collection of skills and hooks "
+            "ranging from plan drafting, to advanced memory management, to user message "
+            "readability (mitigating 'Claudanese') and code reliability.",
+            card_top - 76, x=54, width=425, size=9, leading=12.3, gap=5)
+wy = bullet("Built a planning skill that turns open-ended goals into evidence-backed plans "
+            "with explicit design decisions, acceptance criteria, and implementation latitude "
+            "(vastly superior to /grill-me).",
+            wy, x=54, width=425, size=9, leading=12.3, gap=5)
+wy = bullet("Created an execution engine that follows the agreed plan, resolves in-scope "
+            "implementation ambiguity, and asks the engineer when the design must change.",
+            wy, x=54, width=425, size=9, leading=12.3, gap=5)
+wy = bullet("Independent, read-only auditors are first-class subagents, driving in-scope "
+            "bug fixes to converge to a stable solution, freeing engineers to focus on "
+            "design decisions and code review.",
+            wy, x=54, width=425, size=9, leading=12.3, gap=0)
 if wy < card_bottom + 8:
     raise ValueError("WAR feature overflows its panel")
-qr(WAR, "Explore WAR", 416, card_bottom + 54, size=65)
-qr(DEMO, "Watch demo", 493, card_bottom + 54, size=65)
+qr(WAR, "Explore WAR", 493, card_top - 120, size=65)
+qr(DEMO, "Watch demo", 493, card_top - 207, size=65)
 
 y = section("Experience", card_bottom - 19)
 y = role("Lead ML & DevOps Engineer", "Sequoia Port Inc.",
          "Mar 2021 - Present  |  Remote / Los Angeles, CA", y)
 for text in [
-    "<b>Led the migration of medical-record Activation to self-hosted Qwen 3.6 (27B), "
-    "bringing measured AI pipeline cost below $0.01/page</b>: $0.009628 across 110.1K page "
-    "activations (Oct 21-26, 2026; excluding chat costs).",
-    "Built asynchronous LLM routing across detection, transcription, extraction, classification, "
-    "and summarization using Step Functions, SQS/SNS, and DynamoDB, with durable recovery, "
-    "validated outputs, and controlled fallback to paid APIs.",
-    "Moved seven page and summary compute steps to ECS Fargate and ARM64; added Spot capacity "
-    "with on-demand recovery for bulk page processing.",
-    "Operationalized hybrid GPU inference using local ECS Anywhere workers and queue-driven "
-    "cloud fallback, with Spot/on-demand capacity that scales to zero when idle.",
-    "Shipped a Python-native clinical record-summary pipeline with pgvector retrieval, parallel "
-    "extraction, shadow comparisons, transactional persistence, and runtime fallback.",
-    "Built biomedical translation evaluations and extended extraction/deduplication benchmarks "
-    "with degraded scans, clinical-error reports, and paired, blinded model comparisons.",
-    "Protected physician edits during reprocessing through database-authoritative record "
-    "reconciliation and idempotent persistence.",
+    "<b>Cut AI Activation processing costs from ~$0.031 to &lt;$0.01/page</b> by migrating "
+    "to self-hosted Qwen 3.6 (27B). At <b>500K+ pages/month</b>, this represents "
+    "<b>~$125K+ in annualized processing savings</b>.",
+    "Architected the core medical-record ingestion, segmentation, and indexing pipeline "
+    "serving Fortune 100 healthcare customers: <b>100M+ pages processed</b> and "
+    "<b>5M+ pages/month</b>, separate from AI Activation.",
+    "Built clinical AI products that reduced insurance claim review time by <b>65%</b> and "
+    "specialist escalations by <b>40%</b>; automated segmentation of 1,000+ page cases for "
+    "physician review in under an hour.",
+    "Improved clinical retrieval from <b>87% to 95% Recall@5</b> using a domain ontology and "
+    "graph database; delivered case summaries with validated source citations and PHI protection.",
+    "<b>Reduced ECS compute costs by 80%</b> through ARM64 optimization and Spot capacity "
+    "with automatic on-demand recovery.",
+    "Built automated and on-demand evaluation pipelines to verify that NLP model migrations "
+    "(including Claude to Qwen) meet or exceed deployed-system quality, using regression "
+    "checks, blinded comparisons, and clinical-error analysis.",
 ]:
     y = bullet(text, y)
 footer(1)
 c.showPage()
 
-# Page 2: established impact, earlier roles, and technical breadth.
+# Page 2: engineering depth, earlier roles, and technical breadth.
 paragraph("Lukas José Ferrer", 750, size=16, leading=21, bold=True)
 paragraph("Production AI  /  ML infrastructure  /  Agent orchestration", 724,
           size=9, leading=13, color=MUTED)
 y = section("Experience continued", 706)
-y = paragraph("<b>Sequoia Port Inc.</b> | Selected earlier impact", y, size=10.3, leading=14) - 9
+y = paragraph("<b>Sequoia Port Inc.</b> | Production quality &amp; reliability", y, size=10.3, leading=14) - 9
 for text in [
-    "Architected a fault-tolerant medical-record NLP pipeline serving Fortune 100 healthcare "
-    "customers: <b>100M+ pages processed</b> and <b>5M+ pages/month on 2-4 GPUs</b>.",
-    "Built clinical AI products that reduced insurance claim review time by <b>65%</b> and "
-    "specialist escalations by <b>40%</b>; automated segmentation of 1,000+ page cases for "
-    "physician review in under an hour.",
-    "Improved clinical retrieval from <b>87% to 95% Recall@5</b> using a domain ontology and "
-    "graph database; built multi-stage case summaries with citation validation and PHI anonymization.",
+    "Designed idempotent processing and durable persistence that preserve human reviewers' "
+    "edits during AI Activation, keeping medical-record updates consistent across concurrent "
+    "processing, retries, and reruns.",
+    "Built resilient model-serving infrastructure with asynchronous execution, hybrid "
+    "local/cloud GPU capacity, durable recovery, and automatic fallback to keep clinical "
+    "workflows running.",
 ]:
     y = bullet(text, y)
 
@@ -191,16 +200,21 @@ for text in [
 ]:
     y = bullet(text, y)
 
-y = section("Technical skills", y - 12)
+y = section("Technical & professional skills", y - 12)
 for text in [
     "<b>AI &amp; ML:</b> PyTorch, Transformers, multimodal models, LoRA, distillation, Qwen, "
-    "Anthropic/OpenAI APIs, RAG, pgvector, FAISS, evaluation, citation validation.",
+    "Anthropic/OpenAI APIs, RAG, pgvector, FAISS, citation validation.",
+    "<b>Evaluation:</b> LLM red teaming, regression benchmarking, blinded model comparisons, "
+    "statistical testing.",
     "<b>Infrastructure:</b> AWS CDK, Lambda, Step Functions, ECS/Fargate, ECS Anywhere, EC2, "
     "SQS/SNS, S3, DynamoDB, PostgreSQL, Docker, Linux, GPU serving, CI/CD.",
     "<b>Development:</b> Python, TypeScript/JavaScript, SQL, Bash, React, Ruby on Rails, "
     "Claude Code, MCP, multi-agent orchestration, Git worktrees, SQLite FTS5.",
     "<b>Domain:</b> Clinical document processing, PHI protection, HIPAA-oriented pipelines, "
     "differential privacy (PATE), medical-device regulatory workflows.",
+    "<b>Product &amp; engineering:</b> Requirements discovery, technical planning, design reviews, "
+    "technical writing, risk assessment, and translating clinical workflows into measurable "
+    "product goals.",
 ]:
     y = paragraph(text, y, size=9.1, leading=12.3) - 4
 
